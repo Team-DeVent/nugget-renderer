@@ -1,6 +1,6 @@
 import ffmpeg from 'fluent-ffmpeg';
-import * as options from './config/renderOption.json' assert {type: 'json'};
-import * as elements from './config/timeline.json' assert {type: 'json'};
+import * as jsonOptions from './config/renderOption.json' assert {type: 'json'};
+import * as jsonElements from './config/timeline.json' assert {type: 'json'};
 
 
 let dir = "/"
@@ -10,6 +10,9 @@ let elementCounts = {
 }
 
 function render() {
+    let options = jsonOptions.default
+    let elements = jsonElements.default
+
     elementCounts.video = 1
     elementCounts.audio = 0
   
@@ -80,7 +83,7 @@ function render() {
     if (elementCounts.audio != 0) {
       command.outputOptions(["-map audio?"])
     }
-    command.output('./result.mp4')
+    command.output('./export/result.mp4')
     command.audioCodec('aac')
     command.videoCodec('libx264')
     command.fps(50)
