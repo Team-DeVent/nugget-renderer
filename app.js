@@ -1,6 +1,35 @@
 import ffmpeg from 'fluent-ffmpeg';
-import * as jsonOptions from './config/renderOption.json' assert {type: 'json'};
-import * as jsonElements from './config/timeline.json' assert {type: 'json'};
+import fetch from 'node-fetch';
+
+
+
+const timelineDataUrl = `${process.env.URL}/timelines/${process.env.UUID}/timeline.json`
+const renderOptionDataUrl = `${process.env.URL}/timelines/${process.env.UUID}/renderOption.json`
+
+let settings = { method: "Get" };
+let jsonOptions, jsonElements;
+
+fetch(renderOptionDataUrl, settings)
+    .then(res => res.json())
+    .then((json) => {
+      console.log(json)
+      jsonOptions = json
+}).then(() => {
+  fetch(timelineDataUrl, settings)
+  .then(res => res.json())
+  .then((json) => {
+    jsonElements = json
+}).then(() => {
+  console.log(jsonOptions, jsonElements)
+
+  render()
+})
+})
+
+
+
+
+
 
 
 let dir = "/"
@@ -10,8 +39,9 @@ let elementCounts = {
 }
 
 function render() {
-    let options = jsonOptions.default
-    let elements = jsonElements.default
+  console.log(process.env.URL)
+    let options = jsonOptions
+    let elements = jsonElements
 
     elementCounts.video = 1
     elementCounts.audio = 0
@@ -23,6 +53,7 @@ function render() {
   
     let filter = []
     let command = ffmpeg()
+    console.log("dddd", options, options.videoDuration)
     command.input('./media/background.png').loop(options.videoDuration)
   
     filter.push({
@@ -119,7 +150,7 @@ function addFilterMedia(object) {
     let checkStaticCondition = staticFiletype.indexOf(object.element.filetype) >= 0
     let checkDynamicCondition = dynamicFiletype.indexOf(object.element.filetype) >= 0
   
-    object.command.input(`./data/${object.element.localpath}`)
+    object.command.input(`${object.element.localpath}`)
     
   
     let options = {
@@ -204,7 +235,7 @@ function addFilterAudio(object) {
       endTime: (object.element.startTime/200) + (object.element.duration/200)
     }
   
-    object.command.input(`./data/${object.element.localpath}`)
+    object.command.input(`${object.element.localpath}`)
       .audioCodec('copy')
       .audioChannels(2)
       .inputOptions(`-itsoffset ${options.startTime}`)
@@ -231,4 +262,3 @@ function addFilterAudio(object) {
   
 }
   
-render()

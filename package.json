@@ -1,24 +1,25 @@
 {
     "type": "module",
     "name": "nugget-renderer",
-  "version": "1.0.0",
-  "description": "너겟 랜더링 컨테이너",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Team-DeVent/nugget-renderer.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Team-DeVent/nugget-renderer/issues"
-  },
-  "homepage": "https://github.com/Team-DeVent/nugget-renderer#readme",
-  "dependencies": {
-    "fluent-ffmpeg": "^2.1.2"
-  }
+    "version": "1.0.0",
+    "description": "너겟 랜더링 컨테이너",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Team-DeVent/nugget-renderer.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Team-DeVent/nugget-renderer/issues"
+    },
+    "homepage": "https://github.com/Team-DeVent/nugget-renderer#readme",
+    "dependencies": {
+        "fluent-ffmpeg": "^2.1.2",
+        "node-fetch": "^3.2.10"
+    }
 }
