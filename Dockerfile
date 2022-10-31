@@ -8,7 +8,7 @@ RUN apt-get -qq install nodejs --yes
 
 
 WORKDIR /app 
-COPY package*.json /app 
+COPY package*.json /app/ 
 
 RUN apt-get install -y ffmpeg
 RUN npm install 
