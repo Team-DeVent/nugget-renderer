@@ -10,7 +10,8 @@ docker build --tag nuggetrenderer:0.1 .
 ## run
 ```
 docker run -it \
--v <host_asset_dir>:/app/data \
--v <host_dir>/<project_UUID>:/app/config \
+-e URL=http:aaa.aaa \
+-e UUID=0000-0000-0000-0000 \
+-e VIRTUAL_HOST=uuid.nugget.testbed.devent.kr \
 nuggetrenderer /bin/bash
 ```

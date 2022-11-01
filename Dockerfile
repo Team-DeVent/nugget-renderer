@@ -17,4 +17,4 @@ RUN npm install
 COPY . /app 
 CMD ["npm", "run", "start"]
 
-EXPOSE 9012
+EXPOSE 3030

@@ -19,6 +19,8 @@
     },
     "homepage": "https://github.com/Team-DeVent/nugget-renderer#readme",
     "dependencies": {
+        "body-parser": "^1.20.1",
+        "express": "^4.18.2",
         "fluent-ffmpeg": "^2.1.2",
         "node-fetch": "^3.2.10"
     }
