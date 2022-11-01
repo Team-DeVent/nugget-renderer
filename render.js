@@ -13,7 +13,6 @@ export function renderStart() {
   fetch(renderOptionDataUrl, settings)
       .then(res => res.json())
       .then((json) => {
-        console.log(json)
         jsonOptions = json
   }).then(() => {
     fetch(timelineDataUrl, settings)
@@ -21,7 +20,6 @@ export function renderStart() {
     .then((json) => {
       jsonElements = json
   }).then(() => {
-    console.log(jsonOptions, jsonElements)
   
     render()
   })
@@ -40,7 +38,6 @@ export function renderStart() {
   }
   
   function render() {
-    console.log(process.env.URL)
       let options = jsonOptions
       let elements = jsonElements
   
