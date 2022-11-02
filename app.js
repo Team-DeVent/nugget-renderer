@@ -13,7 +13,7 @@ async function startExpressServer() {
     });
 }
   
-startExpressServer();
+
 
 const timelineDataUrl = `${process.env.URL}/timelines/${process.env.UUID}/timeline.json`
 const renderOptionDataUrl = `${process.env.URL}/timelines/${process.env.UUID}/renderOption.json`
@@ -143,6 +143,7 @@ function render() {
     command.on('end', function() {
       //.sender.send('PROCESSING_FINISH')
         console.log('Finished processing');
+        startExpressServer();
     })
     command.run();
     
